@@ -4,22 +4,22 @@ use crate::schema::Schema;
 /// A heap storage contains multiple key-value pairs.
 /// Optionally, series of B-tree based index storage, of which from a (composite) key to heap tuple id.
 #[derive(Debug)]
-pub struct Lake {
+pub struct DB {
     schema: Schema,
 }
 
-impl Lake {
+impl DB {
     /// new creates a DB instance.
     pub fn new(schema: Schema) -> Self {
         Self { schema }
     }
 
     /// scan scans all data out with a set of filtering.
-    pub fn scan(&self, exprs: Vec<Expr>) -> anyhow::Result<RecordBatch> {
+    pub async fn scan(&self, exprs: Vec<Expr>) -> anyhow::Result<RecordBatch> {
         unimplemented!();
     }
 
-    pub fn insert(&self, record_batches: RecordBatch) -> anyhow::Result<()> {
+    pub async fn insert(&self, record_batches: RecordBatch) -> anyhow::Result<()> {
         unimplemented!();
     }
 }
@@ -28,21 +28,21 @@ pub struct Tx {}
 
 impl Tx {
     /// scan scans all data out with a set of filtering.
-    pub fn scan(&self, exprs: Vec<Expr>) -> anyhow::Result<RecordBatch> {
+    pub async fn scan(&self, exprs: Vec<Expr>) -> anyhow::Result<RecordBatch> {
         unimplemented!();
     }
 
-    pub fn insert(&self, record_batches: RecordBatch) -> anyhow::Result<()> {
+    pub async fn insert(&self, record_batches: RecordBatch) -> anyhow::Result<()> {
         unimplemented!();
     }
 
     /// commit commits the transaction.
-    pub fn commit(&self) -> anyhow::Result<()> {
+    pub async fn commit(&self) -> anyhow::Result<()> {
         unimplemented!();
     }
 
     /// rollback rollbacks the transaction.
-    pub fn rollback(&self) -> anyhow::Result<()> {
+    pub async fn rollback(&self) -> anyhow::Result<()> {
         unimplemented!();
     }
 }
